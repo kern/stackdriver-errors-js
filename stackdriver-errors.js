@@ -107,10 +107,12 @@ StackdriverErrorReporter.prototype.report = function(err, options) {
   var payload = {};
   payload.serviceContext = this.serviceContext;
   payload.context = this.context;
-  payload.context.httpRequest = {
-    userAgent: window.navigator.userAgent,
-    url: window.location.href,
-  };
+
+  // TODO(@kern): Determine if in browser
+  // payload.context.httpRequest = {
+  //   userAgent: window.navigator.userAgent,
+  //   url: window.location.href,
+  // };
 
   var firstFrameIndex = 0;
   if (typeof err == 'string' || err instanceof String) {
